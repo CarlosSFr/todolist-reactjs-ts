@@ -22,7 +22,7 @@
 body{
     background-color: var(--gray-600);
     -webkit-font-smoothing: antialiased;
-    /* font-family: 'Inter', sans-serif; */
+    font-family: 'Inter', sans-serif;
 }
 
 :focus{

@@ -12,10 +12,10 @@ function Header() {
           <h1 className={styles.logoTwo}>do</h1>
         </div>
       </header>
-      <div className={styles.addTask}>
-        <input type="text" placeholder="Adicione uma nova tarefa" />
-        <button> Criar <PlusCircle size={20} /> </button>
-      </div>
+      <form className={styles.addTask}>
+          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <button type="submit"> Criar <PlusCircle size={20} /> </button>
+      </form>
     </div>
   );
 }
