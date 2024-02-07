@@ -1,14 +1,36 @@
-import { Clipboard } from '@phosphor-icons/react'
 import styles from './Tasks.module.css'
-// import NewTask from "./newTask"
+import { useState } from 'react';
+import NewTask from "./NewTask"
+import { PlusCircle } from "@phosphor-icons/react"
+import EmptyTask from "./EmptyTask"
 
 function Tasks() {
 
+    const [tasks, setTasks] = useState([
+        "",
+    ]);
 
+    const [inputValue, setInputValue] = useState("");
+
+    function handleInputValue(){
+        
+        setInputValue(event.target.value);
+        
+    }
+
+    function handleCreateNewTask(){
+        event.preventDefault();
+
+        if(inputValue !== ""){
+            setTasks([...tasks, inputValue]);
+        }
+    }
 
     return (
         <div className={styles.tasksWrapper}>
+
             <div className={styles.tasksList}>
+
                 <header className={styles.tasksHeader}>
                     <div className={styles.tasksCountersDiv}>
                         <p>Tarefas criadas</p>
@@ -19,14 +41,30 @@ function Tasks() {
                         <span className={styles.tasksCount}>0</span>
                     </div>
                 </header>
-                <div className={styles.newTasks}>
-                    {/* <NewTask /> */}
-                    <Clipboard size={56}/>
-                    <p><strong>Você ainda não tem tarefas cadastradas</strong>
-                    Crie tarefas e organize seus itens a fazer</p>
-                </div>
+
+                <form onSubmit={handleCreateNewTask} className={styles.addTask}>
+                    <input 
+                    type="text" 
+                    placeholder="Adicione uma nova tarefa"
+                    onChange={handleInputValue}
+                    />
+                    <button type="submit"> Criar <PlusCircle size={20} /> </button>
+                </form>
+
+                    {tasks.map(task => {
+                        if(tasks.length !== 1){
+                            if(task !== ""){
+                                return <NewTask 
+                                            content = {task}
+                                        />
+                            }
+                        }else{
+                            return <EmptyTask />
+                        }
+                    })}
                 
             </div>
+
         </div>
     );
 }

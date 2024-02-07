@@ -1,18 +1,24 @@
 import styles from "./NewTask.module.css"
 import { Trash } from "@phosphor-icons/react"
 
-function NewTask(){
+interface contentProps{
+    content: string;
+}
 
-    
+function NewTask({ content }:contentProps){
+
+    function handleDeleteTask(){
+
+        
+    }
 
     return (
         <div className={styles.newTaskWrapper}>
             <div className={styles.divSelectorBtn}>
                 <button className={styles.selectorButton}></button>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-            Dicta delectus totam itaque excepturi porro animi reiciendis quis.</p>
-            <button className={styles.trashButton}><Trash size={20}/></button>
+            <p>{content}</p>
+            <button onClick={handleDeleteTask} className={styles.trashButton}><Trash size={20}/></button>
         </div>
 
     );

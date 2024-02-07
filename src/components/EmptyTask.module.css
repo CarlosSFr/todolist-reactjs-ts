@@ -1,0 +1,17 @@
+.newTasks{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1.5rem;
+    width: 46rem;
+    gap: 1rem;
+    color: var(--gray-300);
+    border-top: 2px solid var(--gray-400);
+}
+
+.newTasks p{
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-300);
+}
