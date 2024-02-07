@@ -80,14 +80,17 @@ function Tasks() {
                     {tasks.map(task => {
                         if(tasks.length !== 1){
                             if(task !== ""){
-                                return <NewTask 
+                                return <NewTask
+                                            key={task} 
                                             content = {task}
                                             onDelete = {handleDeleteTask}
                                             onTaskChecked = {handleTaskChecked}
                                         />
                             }
                         }else{
-                            return <EmptyTask />
+                            return  <EmptyTask
+                                        key={task}
+                                    />
                         }
                     })}
                 
