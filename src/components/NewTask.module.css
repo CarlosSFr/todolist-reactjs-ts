@@ -1,0 +1,48 @@
+.newTaskWrapper{
+    display: flex;
+    justify-content: flex-start;
+    border: solid 1px var(--gray-400);
+    background-color: var(--gray-500);
+    gap: 0.75rem;
+    padding: 1rem 1rem;
+    border-radius: 4px;
+    width: 46rem;
+    height: 4.5rem;
+}
+
+.newTaskWrapper p{
+    font-size: 0.875rem;
+    color: var(--gray-100);
+}
+
+
+.divSelectorBtn{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.selectorButton{
+    border-radius: 50%;
+    background-color: var(--gray-500);
+    border: 2px solid var(--blue);
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.selectorButton:hover{
+    border: 2px solid var(--blue-dark);
+    cursor: pointer;
+    
+}
+
+.trashButton{
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--gray-500);
+    border: none;
+    color: var(--gray-300);
+}
