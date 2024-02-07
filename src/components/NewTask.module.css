@@ -12,10 +12,17 @@
     margin-bottom: 0.75rem;
 }
 
-.newTaskWrapper p{
+.notChecked{
     font-size: 0.875rem;
     color: var(--gray-100);
     width: 39.5rem;
+}
+
+.checked{
+    font-size: 0.875rem;
+    color: var(--gray-300);
+    width: 39.5rem;
+    text-decoration: line-through;
 }
 
 .divSelectorBtn{
@@ -31,12 +38,28 @@
     border: 2px solid var(--blue);
     width: 1.1rem;
     height: 1.1rem;
+    color: transparent;
 }
-
 .selectorButton:hover{
     border: 2px solid var(--blue-dark);
     cursor: pointer;
-    
+}
+
+.selectorButtonChecked{
+    border-radius: 50%;
+    background-color: var(--purple-dark);
+    border: 2px solid var(--purple-dark);
+    width: 1.1rem;
+    height: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.selectorButtonChecked:hover{
+    border: 2px solid var(--purple);
+    background-color: var(--purple);
+    cursor: pointer;
 }
 
 .trashButton{

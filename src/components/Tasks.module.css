@@ -37,7 +37,7 @@
     font-size: 0.875rem;
 }
 
-.tasksCountersDiv span{
+.tasksCountOne{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,9 +45,34 @@
     font-size: 0.75rem;
     background-color: var(--gray-400);
     border-radius: 10px;
-    width: 25px;
+    width: 26px;
     height: 19px;
 }
+
+.tasksCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.75rem;
+    background-color: var(--gray-400);
+    border-radius: 10px;
+    width: 26px;
+    height: 19px;
+}
+
+.tasksCountNew{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.75rem;
+    background-color: var(--gray-400);
+    border-radius: 10px;
+    width: 52px;
+    height: 19px;
+}
+
 
 .addTask{
     display: flex;

@@ -1,5 +1,5 @@
 import styles from './Tasks.module.css'
-import { useState } from 'react';
+import { useState, FormEvent, ChangeEvent} from 'react';
 import NewTask from "./NewTask"
 import { PlusCircle } from "@phosphor-icons/react"
 import EmptyTask from "./EmptyTask"
@@ -11,18 +11,40 @@ function Tasks() {
     ]);
 
     const [inputValue, setInputValue] = useState("");
+    const [completedTasksCount, setCompletedTasksCount] = useState(0);
 
-    function handleInputValue(){
+    function handleInputValue(event: ChangeEvent<HTMLInputElement>){
         
         setInputValue(event.target.value);
         
     }
 
-    function handleCreateNewTask(){
+    function handleCreateNewTask(event: FormEvent){
         event.preventDefault();
 
         if(inputValue !== ""){
             setTasks([...tasks, inputValue]);
+        }
+
+        setInputValue("");
+    }
+
+    function handleDeleteTask(taskToDelete:string){
+
+        const tasksWithoutDeleted = tasks.filter(task => {
+            return task !== taskToDelete;
+        })
+
+        setTasks(tasksWithoutDeleted);
+
+    }
+
+    function handleTaskChecked(isChecked: boolean) {
+        // Atualizar o contador de tarefas concluídas
+        if (isChecked) {
+          setCompletedTasksCount(prevCount => prevCount + 1);
+        } else {
+          setCompletedTasksCount(prevCount => prevCount - 1);
         }
     }
 
@@ -34,11 +56,14 @@ function Tasks() {
                 <header className={styles.tasksHeader}>
                     <div className={styles.tasksCountersDiv}>
                         <p>Tarefas criadas</p>
-                        <span className={styles.tasksCount}>0</span>
+                        <span className={styles.tasksCountOne}>{tasks.length - 1}</span>
                     </div>
                     <div className={styles.tasksCountersDiv}>
                         <p>Concluídas</p>
-                        <span className={styles.tasksCount}>0</span>
+                        <span 
+                            className={tasks.length - 1 === 0? styles.tasksCount : styles.tasksCountNew}>
+                            {tasks.length - 1 === 0? `0` : `${completedTasksCount} de ${tasks.length - 1}`}
+                        </span>
                     </div>
                 </header>
 
@@ -47,6 +72,7 @@ function Tasks() {
                     type="text" 
                     placeholder="Adicione uma nova tarefa"
                     onChange={handleInputValue}
+                    value={inputValue}
                     />
                     <button type="submit"> Criar <PlusCircle size={20} /> </button>
                 </form>
@@ -56,6 +82,8 @@ function Tasks() {
                             if(task !== ""){
                                 return <NewTask 
                                             content = {task}
+                                            onDelete = {handleDeleteTask}
+                                            onTaskChecked = {handleTaskChecked}
                                         />
                             }
                         }else{
